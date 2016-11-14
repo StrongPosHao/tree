@@ -34,3 +34,5 @@
 
 # DIY rule
 makefile
+*.dev
+*.layout
