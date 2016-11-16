@@ -1,35 +1,44 @@
-#include "tree.h"
-#include <stdio.h>
 /* tree.c */
 
-#include <stdlib.h>
-Status createBiTree(BiTree *T){
+#include "tree.h"
+
+Status creatBiTree(BiTree T){
 	char ch;
 	scanf("%c",&ch);
-	if(ch==' ') 
-		T=NULL;
+	if(ch==' ') T=NULL;
 	else{
 		if(!(T=(BiTNode *)malloc(sizeof(BiTNode))))
 			exit(OVERFLOW);
-	T->data=ch;
-	createBiTree(T->lchild);
-	createBiTree(T->rchild);
+		T->data=ch;
+		creatBiTree(T->lNode);
+		creatBiTree(T->rNode);
 	}
 	return OK;
 }
-Status traverseBiTree(BiTree *T, void (*traverse)(BiTNode *), int order){
-	switch(order){
-		case 0:
-			printf("%c",T->data);
-			// traverseBiTree(T,traverse, 0);
-			break;
-		case 1:
-			
-			break;
-		case 2:
-			
-			break;
-		default: 
-			exit(ERROR);
-	}
+Status visit(char e){
+	printf("%c  ",e);
+	return OK;
 }
+Status inorderTraverse(BiTree T){
+	Stack S;
+	BiTree p;
+	initStack(&S);
+	p=T;
+	while(p||!isStackEmpty(&S)){
+		if(p){
+			push(&S,p);
+			p=p->lNode;
+		}
+		else{
+			p=pop(&S);
+			if(!visit(p->data))
+				return ERROR;
+			p=p->rNode;	
+		}
+	}
+	return OK;
+} 
+		
+
+
+
