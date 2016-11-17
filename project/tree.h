@@ -7,9 +7,9 @@
 #include "stack.h"
 #include <stdio.h>
 Status initBiTree(BiTree T);
-Status creatBiTree(BiTree T);
+Status createBiTree(BiTNode *root);
 Status visit(char e);
-Status inorderTraverse(BiTree T);
+Status inOrderTraverse(BiTree *T);
 
 #endif
 

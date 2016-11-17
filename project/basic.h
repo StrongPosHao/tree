@@ -10,7 +10,7 @@
 typedef char ElemType;
 typedef int Status;
 
-/* tree implement*/
+/* Tree implement*/
 #define TREE_DEPTH 10
 #define TREE_LEGTH 100
 
@@ -20,15 +20,21 @@ typedef struct BiTNode{
 	struct BiTNode *lNode;
 	struct BiTNode *rNode;
 	ElemType data;
-}BiTNode,*BiTree;
+} BiTNode;
 
-/* stack implement*/
+typedef struct {
+	BiTNode *root;
+	int depth;
+	int length;
+} BiTree;
+
+/* Stack implement*/
 #define STACK_INIT_SIZE 100
 typedef struct {
 	ElemType *base;
 	ElemType *top;
 	int stacksize;
-}Stack;
+} Stack;
 
 #endif
 
