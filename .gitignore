@@ -32,7 +32,8 @@
 *.dSYM/
 *.su
 
-# DIY rule
+# my rules
 makefile
+*.win
 *.dev
 *.layout
