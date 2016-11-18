@@ -21,7 +21,7 @@ Status visit(char e){
 	return OK;
 }
 
-Status inOrderTraverse(BiTree *T){
+Status inOrderTraverse(BiTree *T, void (*trvs)(BiTNode *)){
 	Stack S;
 	BiTNode *p = T->root;
 	initStack(&S);
