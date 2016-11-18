@@ -2,28 +2,29 @@
 
 #include "tree.h"
 
-Status creatBiTree(BiTree T){
+Status createBiTree(BiTNode *root){
 	char ch;
-	scanf("%c",&ch);
-	if(ch==' ') T=NULL;
+	ch = getchar();
+	if(ch==' ') root=NULL;
 	else{
-		if(!(T=(BiTNode *)malloc(sizeof(BiTNode))))
+		if(!(root=(BiTNode *)malloc(sizeof(BiTNode))))
 			exit(OVERFLOW);
-		T->data=ch;
-		creatBiTree(T->lNode);
-		creatBiTree(T->rNode);
+		root->data=ch;
+		createBiTree(root->lNode);
+		createBiTree(root->rNode);
 	}
 	return OK;
 }
+
 Status visit(char e){
 	printf("%c  ",e);
 	return OK;
 }
-Status inorderTraverse(BiTree T){
+
+Status inOrderTraverse(BiTree *T, void (*trvs)(BiTNode *)){
 	Stack S;
-	BiTree p;
+	BiTNode *p = T->root;
 	initStack(&S);
-	p=T;
 	while(p||!isStackEmpty(&S)){
 		if(p){
 			push(&S,p);
@@ -38,7 +39,4 @@ Status inorderTraverse(BiTree T){
 	}
 	return OK;
 } 
-		
-
-
 

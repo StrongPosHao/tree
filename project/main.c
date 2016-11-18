@@ -4,7 +4,7 @@
 
 int main() {
 	BiTree T;
-	creatBiTree(T);
-	inorderTraverse(T);
+	createBiTree(T);
+	inOrderTraverse(T);
 	return 0;
 }
