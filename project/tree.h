@@ -8,8 +8,7 @@
 #include <stdio.h>
 Status initBiTree(BiTree T);
 Status createBiTree(BiTNode *root);
-Status visit(char e);
-Status inOrderTraverse(BiTree *T);
+Status inOrderTraverse(BiTree *T, void (*trvs)(BiTNode *));
 
 #endif
 

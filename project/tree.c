@@ -16,24 +16,18 @@ Status createBiTree(BiTNode *root){
 	return OK;
 }
 
-Status visit(char e){
-	printf("%c  ",e);
-	return OK;
-}
-
 Status inOrderTraverse(BiTree *T, void (*trvs)(BiTNode *)){
 	Stack S;
 	BiTNode *p = T->root;
 	initStack(&S);
 	while(p||!isStackEmpty(&S)){
 		if(p){
-			push(&S,p);
+			push(&S,*p);
 			p=p->lNode;
 		}
 		else{
-			p=pop(&S);
-			if(!visit(p->data))
-				return ERROR;
+			*p=pop(&S);
+			trvs(p);
 			p=p->rNode;	
 		}
 	}

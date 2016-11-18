@@ -9,7 +9,7 @@
 #define OVERFLOW -2
 #define INCREMENT 10
 
-typedef char ElemType;
+
 typedef int Status;
 
 /* Tree implement*/
@@ -21,8 +21,10 @@ typedef struct BiTNode{
 //	enum RTag={0,1};
 	struct BiTNode *lNode;
 	struct BiTNode *rNode;
-	ElemType data;
+	char data;
 } BiTNode;
+
+typedef BiTNode ElemType;
 
 typedef struct {
 	BiTNode *root;
