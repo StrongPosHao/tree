@@ -4,10 +4,27 @@
 
 void visit(BiTNode *e);
 
-int main() {
+int main(){
 	BiTree T;
-	/*createBiTree(T);
-	inOrderTraverse(T);*/
+	char p[100];
+	gets(p);
+	initBiTree(&T);
+	createBiTree(&T,p);
+/*	debug:	*/
+//	T.root=(BiTNode *)malloc(sizeof(BiTNode));
+//	T.root->lNode=(BiTNode *)malloc(sizeof(BiTNode));
+//	T.root->data='a';
+//	T.root->lNode->data='b';
+//	T.root->rNode=NULL;
+//	T.root->lNode->lNode=NULL;
+//	T.root->lNode->rNode=NULL;
+
+	traverse(T.root,visit,0);
+	printf("\n");
+	traverse(T.root,visit,1);
+	printf("\n");
+	traverse(T.root,visit,2);
+	printf("\n");
 	return 0;
 }
 

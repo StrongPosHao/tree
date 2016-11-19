@@ -13,9 +13,10 @@ Status isStackEmpty(Stack *S){
 	if(S->base==S->top) return 1;
 	else return 0;
 }
-Status push(Stack *S,BiTNode p){
+
+Status push(Stack *S,ElemType p){
 	if(S->top-S->base==S->stacksize){
-		S->base=(BiTree *)realloc(S->base,(S->stacksize+INCREMENT)*sizeof(BiTree));
+		S->base=(ElemType *)realloc(S->base,(S->stacksize+INCREMENT)*sizeof(ElemType));
 		if(!S->base) 
 			exit(OVERFLOW);
 		S->top=S->base+S->stacksize;  
@@ -24,12 +25,26 @@ Status push(Stack *S,BiTNode p){
 	*S->top++=p;
 	return OK;
 }
-BiTNode getTop(Stack *S){
+
+ElemType getTop(Stack *S){
 	if(isStackEmpty(S)) exit(ERROR);
 	return *(S->top-1);
 }
-BiTNode pop(Stack *S){
+
+ElemType pop(Stack *S){
 	if(isStackEmpty(S)) 
 		exit(ERROR);
 	return *--S->top;
 }
+
+#ifdef DEBUG
+Status printStack(Stack *S){
+	if(S->base==S->top)
+		return ERROR;
+	ElemType *p;
+	for(p=S->top-1;p>=S->base;p--)
+		printf("%p\n",(*p)->data);
+	printf("\n");
+	return OK;
+} 
+#endif
