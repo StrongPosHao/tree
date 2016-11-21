@@ -6,7 +6,7 @@
 #include "basic.h"
 
 Status initStack(Stack *S);
-Status isStackEmpty(Stack *s);
+Status isStackEmpty(Stack *S);
 Status push(Stack *S,ElemType p);
 ElemType pop(Stack *S);
 ElemType getTop(Stack *S);

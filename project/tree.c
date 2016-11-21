@@ -1,7 +1,7 @@
 /* tree.c */
 
 #include "tree.h"
-
+#define printP(x) printf("%p\n",x)
 Status initBiTree(BiTree *T){
 	T->root=NULL;
 	return OK;
@@ -20,28 +20,37 @@ Status createBiTree(BiTree *T,char *src){
 		createBiTree(root->rNode);
 	}*/
 	Stack S;
-	char *p=src;
-	BiTNode *tp=T->root;
-//	while(s)
-	T->root=(BiTNode *)malloc(sizeof(BiTNode));
 	initStack(&S);
-	if(*p=' ')
-		tp=NULL;
-	else{
-		while(*p){
-			if(tp){
-				push(&S,tp);
-				tp=tp->lNode;
-				tp=(BiTNode *)malloc(sizeof(BiTNode));
+	char *p=src;
+	int flag=1, flr=0;
+	T->root = (BiTNode *)malloc(sizeof(BiTNode));
+	push(&S,T->root);
+	T->root->data = *p++;
+	BiTNode *tp = T->root;
+	while(*p){
+		if(*p==' '){
+			if (flr == 0){
+				getTop(&S)->lNode = NULL;
+				flr = 1;	
 			}
 			else{
-				tp=pop(&S);
-				tp=(BiTNode *)malloc(sizeof(BiTNode));
-				tp=tp->rNode;
-				tp=(BiTNode *)malloc(sizeof(BiTNode));
-				}
+				pop(&S)->rNode = NULL;
 			}
 		}
+		else{
+			if (flr == 0){
+				tp = (getTop(&S)->lNode = (BiTNode *)malloc(sizeof(BiTNode)));
+			}else{
+				tp = (pop(&S)->rNode = (BiTNode *)malloc(sizeof(BiTNode)));
+				flr = 0 ;
+			}
+			tp->data=*p;
+			push(&S,tp);
+
+		}
+		//printStack(&S);
+		p++;
+	}
 	return OK;
 }
 

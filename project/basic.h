@@ -4,6 +4,7 @@
 #define H_BASIC
 
 #define DEBUG
+
 #define OK 1
 #define ERROR 1
 #define TRUE 1

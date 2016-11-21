@@ -43,7 +43,7 @@ Status printStack(Stack *S){
 		return ERROR;
 	ElemType *p;
 	for(p=S->top-1;p>=S->base;p--)
-		printf("%p\n",(*p)->data);
+		printf("%p\n",*p);
 	printf("\n");
 	return OK;
 } 
