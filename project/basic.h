@@ -42,5 +42,16 @@ typedef struct {
 	int stacksize;
 } Stack;
 
+/*normal tree implement*/
+//typedef struct CSNode{
+//	char data;
+//	struct CSNode *firstchild,*nextsibling;
+//}CSNode;
+//
+//typedef struct{
+//	CSNode *root;
+//	int depth;
+//	int length;
+//}CSTree;
 #endif
 

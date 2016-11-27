@@ -114,3 +114,53 @@ Status traverse(BiTNode *p, void (*trvs)(BiTNode *),int tag){
 		}
 	}
 }
+
+BiTNode *createTNodes(char *str){
+	//printf("[EnterFunction]\n%s\n",str);
+	BiTNode *tp = NULL, *head = NULL; 
+	int firstmalloc = 1;
+	while(1){
+		if (*str == '('){
+			int bracket = 1;
+			BiTNode *ttp = createTNodes(str+1);
+			//printf("\n\n[ReturnFunction]\n");
+			str++;
+			while(bracket != 0){
+				if(*str=='(') bracket++;
+				else if(*str==')') bracket--;
+				str++;
+			}
+			str--;
+			tp->lNode = ttp;
+		}
+		else if (*str >= 'A' && *str <= 'Z'){
+			if (firstmalloc){
+				tp = (BiTNode *)malloc(sizeof(BiTNode));
+				firstmalloc = 0;
+				head = tp;
+			}else
+			{
+				tp->rNode = (BiTNode *)malloc(sizeof(BiTNode));
+				tp = tp->rNode;
+			}
+			tp->data = *str;
+			tp->lNode = tp->rNode = NULL;
+		}
+		else if (*str == ','){
+			//tp = tp->rNode;
+		}
+		else if (*str == ')'||*str == 0)
+			return head;
+		str++;
+	} 
+	// if str == 字母
+		// malloc,存字母
+	// if str == 左括号
+		// 调用函数(str+1)
+		// 往右搜寻第一个右括号，跳过，继续 
+		// 把返回的地址连接到前一次的字母
+	// if str == 逗号
+		// malloc 读取下一个字母,存值
+	// if str == 右括号或 0 
+		// return  
+}
